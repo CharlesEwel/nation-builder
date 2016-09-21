@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+@model IEnumerable<NationBuilder.Models.nation>
+
+<h4>Welcome to NationBuilder Game!</h4>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@Html.ActionLink("Click Here to Create a New Nation", "Create")</p>
+}
+else
+{
+    <p>You must be logged in to play. Please see the top of the page.</p>
+}
+
+<h4>@Html.DisplayNameFor(model =>model.Name)</h4>
+<ul>
+    @foreach (var listNation in Model)
+    {
+        <li>@Html.DisplayFor(modelCategory => listNation.Name) | @Html.ActionLink("Play Game", "Details", new { id = listNation.Id }))</li>
+    }
+
+</ul>

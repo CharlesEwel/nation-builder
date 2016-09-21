@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+@model NationBuilder.Models.nation
+<h4>Welcome to NationBuilder!</h4>
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (@Html.BeginForm())
+    {
+        @Html.LabelFor(model => model.Name)
+        <input type="text" name="name" id="name" />
+        @Html.LabelFor(model => model.government)
+        <select id="government" name="government" model => model.government>
+            <option>Democracy</option>
+            <option>Monarchy</option>
+            <option>Theocracy</option>
+            <option>Junta</option>
+        </select>
+        @Html.LabelFor(model => model.economy)
+        <select id="economy" name="economy" model=>model.economy>
+            <option>Exports</option>
+            <option>Banking</option>
+            <option>Tourism</option>
+            <option>Agriculture</option>
+            <option>Vikings</option>
+        </select>
+        @Html.LabelFor(model => model.geography)
+        <select id="geography" name="geography" model=> model.geography>
+            <option>Deserts</option>
+            <option>Great Plains</option>
+            <option>Seasonal Forests</option>
+            <option>Caves</option>
+        </select>
+        <input type="submit" value="Add new nation" />
+    }
+}
+else
+{
+    <p>You must be logged in to play. Please see the top of the page.</p>
+}

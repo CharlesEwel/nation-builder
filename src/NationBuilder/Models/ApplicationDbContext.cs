@@ -18,6 +18,8 @@ namespace NationBuilder.Models
         {
             base.OnModelCreating(builder);
         }
+        public virtual DbSet<nation> Nations { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
     }
 }
 

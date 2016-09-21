@@ -8,9 +8,10 @@ using NationBuilder.Models;
 namespace NationBuilder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160921170920_NationsTable")]
+    partial class NationsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -170,44 +171,6 @@ namespace NationBuilder.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("NationBuilder.Models.Event", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Chocie1Res");
-
-                    b.Property<int>("Chocie2Res");
-
-                    b.Property<int>("Chocie3Res");
-
-                    b.Property<int>("Choice1Pop");
-
-                    b.Property<int>("Choice1Stab");
-
-                    b.Property<string>("Choice1Words");
-
-                    b.Property<int>("Choice2Pop");
-
-                    b.Property<int>("Choice2Stab");
-
-                    b.Property<string>("Choice2Words");
-
-                    b.Property<int>("Choice3Pop");
-
-                    b.Property<int>("Choice3Stab");
-
-                    b.Property<string>("Choice3Words");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("NationBuilder.Models.nation", b =>

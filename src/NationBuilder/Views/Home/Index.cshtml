@@ -9,14 +9,9 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <p>Hello @User.Identity.Name!</p>
-            @using (Html.BeginForm("LogOff", "Home"))
-            {
-                <input type="submit" class="btn btn-default" value="Log out" />
-            }
+    <p>@Html.ActionLink("Click Here to Start a New Game", "Index", "Game")</p>
 }
 else
 {
-    <p>@Html.ActionLink("Register", "Register")</p>
-    <p>@Html.ActionLink("Log in", "Login")</p>
+    <p>You must be logged in to play. Please see the top of the page.</p>
 }
