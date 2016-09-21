@@ -207,6 +207,8 @@
 "C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20160921170920_NationsTable.Designer.cs"
 "C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20160921183907_EventsTable.cs"
 "C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20160921183907_EventsTable.Designer.cs"
+"C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20160921201415_ExpandEvents.cs"
+"C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20160921201415_ExpandEvents.Designer.cs"
 "C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\ApplicationDbContextModelSnapshot.cs"
 "C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\ApplicationDbContext.cs"
 "C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\ApplicationUser.cs"

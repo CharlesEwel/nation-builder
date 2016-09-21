@@ -25,7 +25,7 @@ namespace NationBuilder.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-           var list= _db.Nations.ToList();
+            var list = _db.Nations.ToList();
             return View(list);
         }
         public IActionResult Create()
@@ -39,7 +39,7 @@ namespace NationBuilder.Controllers
             newNation.capital = 50;
             newNation.resources = 50;
             newNation.stability = 50;
-            if(newNation.government=="Democracy")
+            if (newNation.government == "Democracy")
             {
                 newNation.stability -= 25;
                 newNation.resources += 10;
@@ -97,8 +97,26 @@ namespace NationBuilder.Controllers
         public IActionResult Details(int Id)
         {
             nation ntn = _db.Nations.FirstOrDefault(i => i.Id == Id);
-
             return View(ntn);
         }
+        public IActionResult DisplayEvent()
+        {
+            Event newEvent = _db.Events.FirstOrDefault(i => i.Id == 2);
+            return Json(newEvent);
+        }
+
+        [HttpPost]
+        public IActionResult ProcessEvent(int Id, int popChange, int capChange, int stabChange, int resChange)
+        {
+            nation currentNation = _db.Nations.FirstOrDefault(i => i.Id == Id);
+            currentNation.population += popChange;
+            currentNation.capital += capChange;
+            currentNation.resources += resChange;
+            currentNation.stability += stabChange;
+            _db.SaveChanges();
+            return RedirectToAction("Details", Id);
+        }
+
+
     }
 }

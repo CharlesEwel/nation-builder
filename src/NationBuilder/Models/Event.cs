@@ -19,16 +19,22 @@ namespace NationBuilder.Models
         public int Choice1Pop { get; set; }
         public int Choice1Stab { get; set; }
         public int Chocie1Res { get; set; }
+        public int Choice1Cap { get; set; }
+        public string Choice1Outcome { get; set; }
 
         public string Choice2Words { get; set; }
         public int Choice2Pop { get; set; }
         public int Choice2Stab { get; set; }
         public int Chocie2Res { get; set; }
+        public int Choice2Cap { get; set; }
+        public string Choice2Outcome { get; set; }
 
         public string Choice3Words { get; set; }
         public int Choice3Pop { get; set; }
         public int Choice3Stab { get; set; }
         public int Chocie3Res { get; set; }
+        public int Choice3Cap { get; set; }
+        public string Choice3Outcome { get; set; }
 
 
 

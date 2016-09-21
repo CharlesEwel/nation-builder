@@ -1,5 +1,117 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+      $('.new-event').click(function () {
+         $.ajax({
+             type: 'GET',
+             dataType: 'json',
+             contentType: 'application/json',
+             url: '@Url.Action("DisplayEvent")',
+             success: function (result) {
+                 var resultString = '<div class="question"><h2>' + result.title + '</h2><p>' + result.description + '</p>' + '</br></div>';
+                 console.log(result)
+                 $('#event-display').html(resultString);
+                 $('#buttons').show();
+                 $('.option-1-text').html(result.choice1Words);
+                 $('.option-2-text').html(result.choice2Words);
+                 $('.option-3-text').html(result.choice3Words);
+                 $('.answer-one').prepend(result.choice1Outcome);
+                 $('.answer-one-results').html('<input type="hidden" name="Id" value=8 /><input type="hidden" name="popChange" value=' + result.choice1Pop + '/><input type="hidden" name="capChange" value=' + result.choice1Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice1Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie1Res + ' />')
+                 $('.answer-two').prepend(result.choice2Outcome);
+                 $('.answer-two-results').html('<input type="hidden" name="Id" value=8 /><input type="hidden" name="popChange" value=' + result.choice2Pop + '/><input type="hidden" name="capChange" value=' + result.choice2Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice2Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie2Res + ' />')
+                 $('.answer-three').prepend(result.choice3Outcome);
+                 $('.answer-three-results').html('<input type="hidden" name="Id" value=8 /><input type="hidden" name="popChange" value=' + result.choice3Pop + '/><input type="hidden" name="capChange" value=' + result.choice3Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice3Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie3Res + '/>')
+             }
+         });
+      });
+        $('.process-event').submit(function (event) {
+            console.log("process event fires")
+            event.preventDefault();
+            $.ajax({
+                url: '@Url.Action("ProcessEvent")',
+                type: 'POST',
+                dataType: 'json',
+                data: $(this).serialize()
+            });
+        });
+      $('.option-1').click(function () {
+          $('.question').hide();
+          $('#buttons').hide();
+          $('.answer-one').show();
+      });
+      $('.option-2').click(function () {
+          $('.question').hide();
+          $('#buttons').hide();
+          $('.answer-two').show();
+      });
+      $('.option-3').click(function () {
+          $('.question').hide();
+          $('#buttons').hide();
+          $('.answer-three').show();
+      });
+  });
+</script>
+
+@using System.Security.Claims
+@model NationBuilder.Models.nation
+
+<h4>Welcome to NationBuilder Game!</h4>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>@Model.Name</h2>
+    <h4>Information</h4>
+    <ul>
+        <li>Government: @Model.government</li>
+        <li>Economy: @Model.economy</li>
+        <li>Geography: @Model.geography</li>
+    </ul>
+    <h4>Current Stats</h4>
+    <ul class="stats">
+        <li>Population: @Model.population</li>
+        <li>Capital: @Model.capital</li>
+        <li>Resources: @Model.resources</li>
+        <li>Stability: @Model.stability</li>
+    </ul>
+
+    <h4 class="new-event">Bring on a New Event!</h4>
+    <div id="event-display">
+    </div>
+    <div id="outcome"></div>
+    <div id="buttons" style="display: none">
+        <button class="option-1">
+            <span class="option-1-text"></span>
+        </button>
+        <button class="option-2">
+            <span class="option-2-text"></span>
+        </button>
+        <button class="option-3">
+            <span class="option-3-text"></span>
+        </button >
+    </div>
+    <div class="answer-one" style="display: none">
+        <form action="processEvent" class="process-event">
+            <span class="answer-one-results"></span>
+            <button type="submit">Ok</button>
+        </form>
+    </div>
+    <div class="answer-two" style="display: none">
+        <form action="processEvent" class="process-event">
+            <span class="answer-two-results"></span>
+            <button type="submit">Ok</button>
+        </form>
+    </div>
+    <div class="answer-three" style="display: none">
+        <form action="processEvent" class="process-event">
+            <span class="answer-three-results"></span>
+            <button type="submit">Ok</button>
+        </form>
+    </div>
+}
+else
+{
+    <p>You must be logged in to play. Please see the top of the page.</p>
 }
