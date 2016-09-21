@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B886E4F2-2BBB-4089-B1B9-278C38A35E00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1E87EF9B-DA92-4A50-881A-402C481CDEDF}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NationBuilder", "src\NationBuilder\NationBuilder.xproj", "{DF16EA40-54B0-4645-9BCF-5E1B2CE05A10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1D3EFADB-B0B3-4A93-8845-2D94F024A1CB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NationsBuilderTest.Tests", "NationsBuilderTest\NationsBuilderTest.Tests.xproj", "{2C19524C-4179-4D02-9EF8-70DEE59FC9CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF16EA40-54B0-4645-9BCF-5E1B2CE05A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF16EA40-54B0-4645-9BCF-5E1B2CE05A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF16EA40-54B0-4645-9BCF-5E1B2CE05A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF16EA40-54B0-4645-9BCF-5E1B2CE05A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C19524C-4179-4D02-9EF8-70DEE59FC9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C19524C-4179-4D02-9EF8-70DEE59FC9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C19524C-4179-4D02-9EF8-70DEE59FC9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C19524C-4179-4D02-9EF8-70DEE59FC9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF16EA40-54B0-4645-9BCF-5E1B2CE05A10} = {B886E4F2-2BBB-4089-B1B9-278C38A35E00}
+		{2C19524C-4179-4D02-9EF8-70DEE59FC9CC} = {1D3EFADB-B0B3-4A93-8845-2D94F024A1CB}
+	EndGlobalSection
+EndGlobal
