@@ -19,11 +19,11 @@
                  $('.option-1-text').html(result.choice1Words);
                  $('.option-2-text').html(result.choice2Words);
                  $('.option-3-text').html(result.choice3Words);
-                 $('.answer-one').prepend(result.choice1Outcome);
+                 $('.answer-one-wording').html(result.choice1Outcome);
                  $('.answer-one-results').html('<input type="hidden" name="Id" value='+nationId+' /><input type="hidden" name="popChange" value=' + result.choice1Pop + '><input type="hidden" name="capChange" value=' + result.choice1Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice1Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie1Res + ' />')
-                 $('.answer-two').prepend(result.choice2Outcome);
+                 $('.answer-two-wording').html(result.choice2Outcome);
                  $('.answer-two-results').html('<input type="hidden" name="Id" value=' + nationId + ' /><input type="hidden" name="popChange" value=' + result.choice2Pop + '><input type="hidden" name="capChange" value=' + result.choice2Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice2Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie2Res + ' />')
-                 $('.answer-three').prepend(result.choice3Outcome);
+                 $('.answer-three-wording').html(result.choice3Outcome);
                  $('.answer-three-results').html('<input type="hidden" name="Id" value=' + nationId + ' /><input type="hidden" name="popChange" value=' + result.choice3Pop + '><input type="hidden" name="capChange" value=' + result.choice3Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice3Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie3Res + '/>')
              }
          });
@@ -100,18 +100,21 @@
         </button >
     </div>
     <div class="answer-one" style="display: none">
+        <span class="answer-one-wording"></span>
         <form action="processEvent" class="process-event">
             <span class="answer-one-results"></span>
             <button type="submit">Ok</button>
         </form>
     </div>
     <div class="answer-two" style="display: none">
+        <span class="answer-two-wording"></span>
         <form action="processEvent" class="process-event">
             <span class="answer-two-results"></span>
             <button type="submit">Ok</button>
         </form>
     </div>
     <div class="answer-three" style="display: none">
+        <span class="answer-three-wording"></span>
         <form action="processEvent" class="process-event">
             <span class="answer-three-results"></span>
             <button type="submit">Ok</button>

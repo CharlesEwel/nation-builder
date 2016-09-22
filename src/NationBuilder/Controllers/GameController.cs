@@ -117,9 +117,9 @@ namespace NationBuilder.Controllers
             }
             else
             {
-                return Json(null);
+                Event newEvent = _db.Events.FirstOrDefault(i => i.Id == 9);
+                return Json(newEvent);
             }
-            
         }
 
         [HttpPost]
