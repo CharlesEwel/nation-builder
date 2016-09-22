@@ -36,6 +36,8 @@ namespace NationBuilder.Models
         public int Choice3Cap { get; set; }
         public string Choice3Outcome { get; set; }
 
+        public virtual ICollection<EventNation> NationEvents { get; set; }
+
 
 
     }

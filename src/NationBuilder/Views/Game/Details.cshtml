@@ -12,7 +12,6 @@
              url: '@Url.Action("DisplayEvent")',
              success: function (result) {
                  var resultString = '<div class="question"><h2>' + result.title + '</h2><p>' + result.description + '</p>' + '</br></div>';
-                 console.log(result)
                  $('#event-display').html(resultString);
                  $('#buttons').show();
                  $('.option-1-text').html(result.choice1Words);
@@ -28,13 +27,18 @@
          });
       });
         $('.process-event').submit(function (event) {
-            console.log("process event fires")
             event.preventDefault();
             $.ajax({
                 url: '@Url.Action("ProcessEvent")',
                 type: 'POST',
                 dataType: 'json',
-                data: $(this).serialize()
+                data: $(this).serialize(),
+                success: function (result) {
+                    $('.stats').html('<li>Population: ' + result.population + '</li><li>Capital: ' + result.capital + '</li><li>Resources: ' + result.resources + '</li><li>Stability: ' + result.stability + '</li>');
+                    $('.answer-one').hide();
+                    $('.answer-two').hide();
+                    $('.answer-three').hide();
+                }
             });
         });
       $('.option-1').click(function () {

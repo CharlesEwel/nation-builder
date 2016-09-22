@@ -101,6 +101,7 @@ namespace NationBuilder.Controllers
         }
         public IActionResult DisplayEvent()
         {
+            
             Event newEvent = _db.Events.FirstOrDefault(i => i.Id == 2);
             return Json(newEvent);
         }
@@ -114,7 +115,7 @@ namespace NationBuilder.Controllers
             currentNation.resources += resChange;
             currentNation.stability += stabChange;
             _db.SaveChanges();
-            return RedirectToAction("Details", Id);
+            return Json(currentNation);
         }
 
 

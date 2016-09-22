@@ -27,8 +27,9 @@ namespace NationBuilder.Models
         public int stability { get; set; }
 
         public virtual ApplicationUser User { get; set; }
-        public string UserId { get; set; }
 
+        public virtual ICollection<EventNation> NationEvents { get; set; }
+        public string UserId { get; set; }
 
     }
 }
