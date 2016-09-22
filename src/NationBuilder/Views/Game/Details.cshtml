@@ -4,10 +4,12 @@
 }
 <script>
     $(document).ready(function () {
-      $('.new-event').click(function () {
+        $('.new-event').click(function () {
+           var nationId = $('#nationId').val()
          $.ajax({
              type: 'GET',
              dataType: 'json',
+             data: {nationId: nationId},
              contentType: 'application/json',
              url: '@Url.Action("DisplayEvent")',
              success: function (result) {
@@ -18,11 +20,11 @@
                  $('.option-2-text').html(result.choice2Words);
                  $('.option-3-text').html(result.choice3Words);
                  $('.answer-one').prepend(result.choice1Outcome);
-                 $('.answer-one-results').html('<input type="hidden" name="Id" value=8 /><input type="hidden" name="popChange" value=' + result.choice1Pop + '/><input type="hidden" name="capChange" value=' + result.choice1Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice1Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie1Res + ' />')
+                 $('.answer-one-results').html('<input type="hidden" name="Id" value='+nationId+' /><input type="hidden" name="popChange" value=' + result.choice1Pop + '><input type="hidden" name="capChange" value=' + result.choice1Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice1Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie1Res + ' />')
                  $('.answer-two').prepend(result.choice2Outcome);
-                 $('.answer-two-results').html('<input type="hidden" name="Id" value=8 /><input type="hidden" name="popChange" value=' + result.choice2Pop + '/><input type="hidden" name="capChange" value=' + result.choice2Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice2Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie2Res + ' />')
+                 $('.answer-two-results').html('<input type="hidden" name="Id" value=' + nationId + ' /><input type="hidden" name="popChange" value=' + result.choice2Pop + '><input type="hidden" name="capChange" value=' + result.choice2Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice2Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie2Res + ' />')
                  $('.answer-three').prepend(result.choice3Outcome);
-                 $('.answer-three-results').html('<input type="hidden" name="Id" value=8 /><input type="hidden" name="popChange" value=' + result.choice3Pop + '/><input type="hidden" name="capChange" value=' + result.choice3Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice3Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie3Res + '/>')
+                 $('.answer-three-results').html('<input type="hidden" name="Id" value=' + nationId + ' /><input type="hidden" name="popChange" value=' + result.choice3Pop + '><input type="hidden" name="capChange" value=' + result.choice3Cap + ' /><input type="hidden" name="stabChange" value=' + result.choice3Stab + ' /><input type="hidden" name="resChange" value=' + result.chocie3Res + '/>')
              }
          });
       });
@@ -66,6 +68,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
+    <input type="hidden" value=@Model.Id id="nationId" />
     <h2>@Model.Name</h2>
     <h4>Information</h4>
     <ul>

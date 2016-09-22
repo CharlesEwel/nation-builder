@@ -88,6 +88,12 @@ namespace NationBuilder.Controllers
                 newNation.resources -= 5;
             }
             _db.Nations.Add(newNation);
+            var eventList = _db.Events.ToList();
+            foreach(Event listEvent in eventList)
+            {
+                EventNation newEventNation = new EventNation { EventId = listEvent.Id, NationId = newNation.Id };
+                _db.NationEvents.Add(newEventNation);
+            }
             _db.SaveChanges();
             return RedirectToAction("Index");
 
@@ -99,11 +105,21 @@ namespace NationBuilder.Controllers
             nation ntn = _db.Nations.FirstOrDefault(i => i.Id == Id);
             return View(ntn);
         }
-        public IActionResult DisplayEvent()
+        public IActionResult DisplayEvent(int nationId)
         {
+            EventNation currentEventNation = _db.NationEvents.FirstOrDefault(i => i.NationId == nationId);
+            if(currentEventNation != null)
+            {
+                _db.Remove(currentEventNation);
+                _db.SaveChanges();
+                Event newEvent = _db.Events.FirstOrDefault(i => i.Id == currentEventNation.EventId);
+                return Json(newEvent);
+            }
+            else
+            {
+                return Json(null);
+            }
             
-            Event newEvent = _db.Events.FirstOrDefault(i => i.Id == 2);
-            return Json(newEvent);
         }
 
         [HttpPost]
